@@ -7,6 +7,8 @@ Created on 2017Äê4ÔÂ19ÈÕ
 
 # engine£¨object£© for sql :
 
+import threading
+
 class _Engine(object):
     def __init__(self,connect):
         self._connect = connect
@@ -27,7 +29,7 @@ class _DbCtx(threading.local):
         return not self.connection is None
     
     def init(self):
-        self.connection = _LasyConnection()
+        self.connection =_LasyConnection()
         self.transaction = 0
         
     def cleanup(self):
